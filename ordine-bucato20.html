@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordine Bucato 20 Tramonto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .order-section {
+            margin-top: 50px;
+        }
+        .order-section input {
+            width: 60px;
+            padding: 10px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+        .total {
+            font-size: 1.5em;
+            margin: 20px 0;
+            color: #555;
+        }
+        .cta {
+            margin-top: 20px;
+        }
+        .cta button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+        .cta button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ordina Bucato 20 Tramonto</h1>
+    <div class="order-section">
+        <p>Prezzo unitario: <strong>20.00€</strong></p>
+        <label for="quantity">Inserisci quantità:</label>
+        <input type="number" id="quantity" value="1" min="1" onchange="updateTotal()">
+        <p class="total" id="total">Totale: 20.00€</p>
+    </div>
+    <div class="cta">
+        <button onclick="sendOrder()">Invia Conferma Ordine</button>
+    </div>
+    <script>
+        const productName = "Bucato 20 Tramonto";
+        const productPrice = 20.00;
+
+        function updateTotal() {
+            const quantity = document.getElementById("quantity").value;
+            const total = (quantity * productPrice).toFixed(2);
+            document.getElementById("total").textContent = `Totale: ${total}€`;
+        }
+
+        function sendOrder() {
+            const quantity = document.getElementById("quantity").value;
+            const total = (quantity * productPrice).toFixed(2);
+            const message = `Ciao! Vorrei ordinare:\n- ${productName}\n- Quantità: ${quantity}\n- Totale: ${total}€`;
+            const whatsappURL = `https://wa.me/393717771328?text=${encodeURIComponent(message)}`;
+            window.open(whatsappURL, "_blank");
+        }
+    </script>
+</body>
+</html>
